@@ -6,6 +6,9 @@ class GameData {
      */
     constructor() {
         this.userName = '';
+        this.inGame = false;
+        this.gameOver = false;
+        this.score = 0;
         this.method1();
     }
 

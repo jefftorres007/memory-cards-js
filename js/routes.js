@@ -1,16 +1,17 @@
 const navBody = `
-<link rel="stylesheet" href="./css/navbar.css">
+
 <style>
 
 </style>
 
 <nav>
-<!--<h1>🥷 ${'gameData.userName'}</h1>-->
-<h1>🥷 ${'Usuario'}</h1>
+<!--<h1>🥷 ${'gameData.userName'}</h1>
+<h1>🙎‍♂️ ${'Usuario'}</h1>-->
+<h1>🙎‍♂️ <span id="username-text"></span></h1>
 <label>Nivel</label>
 <select id="level" class="select">
     <option value="10000">Fácil</option>
-    <option value="5000">Normal</option>
+    <option selected value="5000">Normal</option>
     <option value="2000">Dificil</option>
 </select>
 </nav>
@@ -22,12 +23,12 @@ const PATHS = {
         template: `
 
             <div class="container">
-            <h1>🎮</h1>
-            <div>
-                <input id="username" class="input-text" type="text" placeholder="Nombre jugador" value="JEFF" maxlength="8"/>
+                <h1>🎮</h1>
+            <div class="row">
+                <input id="username" class="input-text" type="text" placeholder="Nombre jugador" value="" maxlength="8"/>
             </div>
 
-            <div>
+            <div class="row">
                 <button class="button" onclick="goGame()">Empezar</button>
             </div>
             </div>
@@ -38,8 +39,9 @@ const PATHS = {
         template: `
             ${navBody}
             <h3 class="score">Puntuación: <span id="score-data">0</span></h3>
+            <h3 id="cnt-timer" class="timer hidden">Tiempo restante: <span id="timer-data"></span></h3>
             
-            <h2>Memorice: <span id="score-data">0</span></h2>
+            <h2 id="title-1">Memorice las cartas</h2>
 
             
             <div class="cnt-numbers">
