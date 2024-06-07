@@ -5,29 +5,20 @@ class AppNavBar extends HTMLElement {
   
       const template = document.createElement('template');
       template.innerHTML = `
+        <link rel="stylesheet" href="./css/navbar.css">
         <style>
-            nav {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
             
-            ul {
-                list-style: none;
-                display: flex;
-            }
-            
-            li {
-                margin-right: 1rem;
-            }
         </style>
             
         <nav>
-            <h1>Dev'Coffee</h1>
-            <ul>
-                <li onclick="ROUTER.load('home')">Home</li>
-                <li onclick="ROUTER.load('game')">GAME</li>
-            </ul>
+            <!--<h1>🥷 ${'gameData.userName'}</h1>-->
+            <h1>🥷 ${'Usuario'}</h1>
+            <label>Nivel</label>
+            <select id="level" class="select">
+                <option value="10000">Fácil</option>
+                <option value="5000">Normal</option>
+                <option value="2000">Dificil</option>
+            </select>
         </nav>
       `;
   
