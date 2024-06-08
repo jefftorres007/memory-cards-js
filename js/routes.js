@@ -25,7 +25,7 @@ const PATHS = {
             <div class="container">
                 <h1>🎮</h1>
             <div class="row">
-                <input id="username" class="input-text" type="text" placeholder="Nombre jugador" value="" maxlength="8"/>
+                <input id="username" class="input-text" type="text" placeholder="Nombre jugador" value="JEFF" maxlength="8"/>
             </div>
 
             <div class="row">
@@ -59,7 +59,7 @@ const PATHS = {
             </div>
 
             <div class="cnt-play-game">
-                <button class="button" onclick="initGame()">Jugar</button>
+                <button id="btn-init-game" class="button" onclick="initGame()">Jugar</button>
             </div>
 
         `,
