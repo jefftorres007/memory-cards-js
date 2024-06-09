@@ -7,7 +7,7 @@ const assets = [
   "/js/gameData.js",
   "/js/router.js",
   "/js/routers.js",
-  "/images/icons/favicon.png",
+  "/favicon.png",
   "/sounds/lose.mp3",
   "/sounds/win.mp3",
 
