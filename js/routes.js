@@ -5,8 +5,7 @@ const navBody = `
 </style>
 
 <nav>
-<!--<h1>🥷 ${'gameData.userName'}</h1>
-<h1>🙎‍♂️ ${'Usuario'}</h1>-->
+
 <h1>🙎‍♂️ <span id="username-text"></span></h1>
 <label>Nivel</label>
 <select id="level" class="select">
@@ -25,7 +24,7 @@ const PATHS = {
             <div class="container">
                 <h1>🎮</h1>
             <div class="row">
-                <input id="username" class="input-text" type="text" placeholder="Nombre jugador" value="JEFF" maxlength="8"/>
+                <input id="username" class="input-text" type="text" placeholder="Nombre jugador" value="${gameData.userName}" maxlength="8"/>
             </div>
 
             <div class="row">

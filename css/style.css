@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 
+/* Estilo elementos genéricos */
 html,body {
   background: #fdfdfd;
   font-family: "Nunito", sans-serif;
@@ -14,17 +15,21 @@ html,body {
 }
 
 main {
+  max-width: 900px;
+  margin: auto;
+  padding: 0.5rem;
   text-align: center;
 }
-
 
 h1 {
   color: #e74c3c;
 }
 
+.hidden{
+  display: none;
+}
 
 
-/**********************************************/
 /* Estilo para los inputs */
 .input-text {
     display: block;
@@ -68,29 +73,14 @@ h1 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-
-
-
-  /* Estilo para los divs contenedores */
-
-
+/* Estilo para los contenedores */
 .row{
   padding: 1rem 2rem;
 }
 
 .container {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center;
-    align-items: center;
-    height: 100vh; */
-    /* max-width: 600px; */
     margin: 0 auto;
     padding: 2rem;
-    /* border: 1px solid #ccc; */
-    /* border-radius: 8px; */
-    /* background-color: #f9f9f9; */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .container h2 {
@@ -105,58 +95,41 @@ h1 {
     color: #666;
 }
 
-.timer{
-  color: #e74c3c;
-}
-.score, .timer{
-    text-align: right;
-    margin: 1.5rem;
-}
-
-.hidden{
-  display: none;
-}
-
-
-
-
 .cnt-numbers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    max-width: 400px;
-    margin: 1.5rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 1.5rem auto;
 }
 
 .cnt-numbers .number {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: calc(33.333% - 1rem);
-    height: 100px;
-    background-color: #3f51b5;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(33.333% - 1rem);
+  height: 100px;
+  background-color: #3f51b5;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 0;
 }
 
 .cnt-numbers .number.yes{
-  background-color: #0bc539;
+background-color: #0bc539;
 }
 
 .cnt-numbers .number.no{
-  background-color: #eb1717;
+background-color: #eb1717;
 }
 
 
-/**********************************************/
 
-
-/****** nav*******/
+/* Estilo para barra de navegación */
 nav {
   display: flex;
   justify-content: space-between;
@@ -174,6 +147,7 @@ ul {
 li {
   margin-right: 1rem;
 }
+
 
 /* Estilo para el select */
 .select {
@@ -199,4 +173,14 @@ li {
   outline: none;
 }
 
-/****** nav*******/
+
+/* Estilo para el timer/score */
+.timer{
+  color: #e74c3c;
+}
+.score, .timer{
+    text-align: right;
+    margin: 1.5rem;
+}
+
+

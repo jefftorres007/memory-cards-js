@@ -1,7 +1,14 @@
 const ROUTER = new Router(PATHS);
-const gameData = new GameData();
+// const gameData = new GameData();
 
-
+const userElm = document.getElementById('username');
+userElm.addEventListener('input', function (e) {
+    const value = e.target.value;    
+    const charsOK = value.replace(/[^a-zA-Z0-9]/g, '');
+    if (value !== charsOK) {
+        e.target.value = charsOK;
+    }
+});
 
 const goGame = () => {
     const userElm = document.getElementById('username');
@@ -14,12 +21,10 @@ const goGame = () => {
     gameData.userName = userElm.value;
     gameData.gameOver = false;
     gameData.score = 0;
-
     
     ROUTER.load('game');
     const userText = document.getElementById('username-text');
-    userText.innerHTML = gameData.userName;
-    
+    userText.innerHTML = gameData.userName;    
 }
 
 const prepareTimer = () => {
@@ -43,33 +48,21 @@ const prepareTimer = () => {
     }, valueInterval);
 }
 
-const initGame = () => {
-    
+const initGame = () => {    
     // validaciones
     if (gameData.gameOver){
         alert(`Gracias por jugar ${gameData.userName}, has obtenido una puntuación de ${gameData.score} puntos.`);
         ROUTER.load('home');
         return;
     }
-
-
     prepareTimer();
-    prepareBoard();
-    // playBackgroundSound(true);
-
-    
-
-    
-
+    prepareBoard(); 
 }
 
 const prepareBoard = ()=>{
     gameData.inGame = true;
-    const numbers = Array.from({ length: 9 }, (_, i) => i + 1).sort(() => Math.random() -0.5);
-
-    
+    const numbers = Array.from({ length: 9 }, (_, i) => i + 1).sort(() => Math.random() -0.5);    
     const cntNumbers = document.querySelectorAll('.cnt-numbers .number');
-
     
     cntNumbers.forEach((cntNumber,i) => {
         cntNumber.innerHTML = numbers[i];
@@ -86,18 +79,12 @@ const prepareBoard = ()=>{
         cntNumber.classList.remove('yes');
     });
 
-
-    // setDisabledNumbers(true);
     setDisabledControlsGame(true);
     setTimeout(() => {
-
-        
-
         
         const elmTitle = document.getElementById('title-1');
         gameData.numberToFind = Math.floor(Math.random() * 9) + 1;
-        elmTitle.innerHTML = `Seleccione el número ${gameData.numberToFind}`;
-        
+        elmTitle.innerHTML = `Seleccione el número ${gameData.numberToFind}`;        
         
         cntNumbers.forEach((cntNumber) => {
             cntNumber.innerHTML = '?';
@@ -107,57 +94,50 @@ const prepareBoard = ()=>{
     }, level.value);
 }
 
+const getPointsByLevel =  ()=>{
+    const level = document.getElementById('level');
+    return (level.value === '10000') ? 10 : (level.value === '5000') ? 20 : 30;
+}
 const newScore =  ()=>{    
     const level = document.getElementById('level');
-    return gameData.score + ((level.value === '10000') ? 10 : (level.value === '5000') ? 20 : 30)
+    return gameData.score + ((level.value === '10000') ? 10 : (level.value === '5000') ? 20 : 30);
 }
 const clickNumber =  (elm) =>{
-    // playBackgroundSound(false);
     let numSelected = parseInt(elm.value);
     if(numSelected === gameData.numberToFind){
+        playSoundNumber(true);
         const level = document.getElementById('level');
         level.disabled = false;
         elm.classList.add('yes');
         elm.innerHTML = elm.value;
 
         const scoreData = document.getElementById('score-data');
-        gameData.score = newScore();
+        // gameData.score = newScore();
+        gameData.addScore(getPointsByLevel());
         scoreData.innerHTML = gameData.score;
+
+        setTimeout(() => {
+            initGame();
+        }, 1000);
     }else{
+        playSoundNumber(false);
         window.navigator.vibrate([2000]);
         gameData.gameOver = true;
         gameData.inGame = false;
-        elm.classList.add('no');
-        
+        elm.classList.add('no');        
     }
     setDisabledNumbers(true);
     setDisabledControlsGame(false);
     elm.innerHTML = elm.value;
 }
 
-
-
-const playBackgroundSound =  (play) =>{
-    const audioElement = new Audio('./sounds/intro.mp3');
-    
-    // Configurar el audio para que se reproduzca en bucle
-    audioElement.loop = true;
-
-    // Ajustar el volumen si es necesario
-    audioElement.volume = 0.5; // Rango de 0.0 a 1.0
-
-    if (play){
-
-        audioElement.play().catch(error => {
-            console.error('Error al reproducir el audio:', error);
-        });
-    }else{
-        audioElement.pause();
-        audioElement.currentTime = 0; 
-    }
+const playSoundNumber =  (win) =>{
+    const audio = new Audio(`./sounds/${win === true ? 'win.mp3' : 'lose.mp3'}`);
+    audio.volume = 1;
+    audio.play().catch(error => {
+        console.error('Error al reproducir el audio:', error);
+    });
 }
-playBackgroundSound(true);
-
 
 const setDisabledControlsGame =  (disabled) =>{
     const level = document.getElementById('level');
@@ -168,10 +148,7 @@ const setDisabledControlsGame =  (disabled) =>{
 
 const setDisabledNumbers =  (disabled) =>{
     const cntNumbers = document.querySelectorAll('.cnt-numbers .number');
-
     cntNumbers.forEach((cntNumber,i) => {
         cntNumber.disabled = disabled;
     });
-
-
 }

@@ -1,6 +1,6 @@
 class GameData {
     /**
-     * Metodo inicial.
+     * Constructor.
      *
      * @return {void}.
      */
@@ -9,7 +9,11 @@ class GameData {
         this.inGame = false;
         this.gameOver = false;
         this.score = 0;
-        this.method1();
+        this.levels = [
+            {level: 1, points: 10, duration: 10000, hits: 1},
+            {level: 2, points: 20, duration: 5000, hits: 1},
+            {level: 3, points: 30, duration: 2000, hits: 1},
+        ]
     }
 
     /**
@@ -17,8 +21,8 @@ class GameData {
      *
      * @return {void}.
      */
-    method1() {
-        console.log(true);
+    addScore(points) {
+        this.score += points;
     }
 
 }

@@ -1,7 +1,0 @@
-TO DO
-
-cuando estoy inGame deshabilitar level      done
-serviceWorker
-refactorizar
-sonido de juego, se reproduce x veces según le de al botón
-vibra cuando se equivoca, queda probar en el movil

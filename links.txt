@@ -1,3 +1,0 @@
-https://www.freecodecamp.org/espanol/news/como-construir-una-pwa-desde-cero-con-html-css-y-javascript/
-
-https://www.ibrahima-ndaw.com/blog/how-to-build-pwa-with-javascript/
